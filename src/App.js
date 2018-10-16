@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TimelineCard from './Components/TimelineCard';
 import TimelineData from './Data';
