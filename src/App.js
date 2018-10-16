@@ -2,25 +2,21 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TimelineCard from './Components/TimelineCard';
+import TimelineData from './Data';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <TimelineCard
-            name="An Entry"
-            description="Yeah Some Stuff Goes Here"  
-          />
-          <TimelineCard
-            name="An Entry"
-            description="Yeah Some Stuff Goes Here"  
-          />
-          <TimelineCard
-            name="An Entry"
-            description="Yeah Some Stuff Goes Here"  
-          />
-          </div>
+          {TimelineData.map(function(obj) {
+            return (
+              <TimelineCard
+                {...obj}
+              />
+            )
+          })}
+        </div>
       </div>
     );
   }
