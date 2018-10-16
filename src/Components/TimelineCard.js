@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 const styles = {
   card: {
@@ -19,7 +21,7 @@ const styles = {
   },
   cardExpanded: {
     width: '100%',
-    maxWidth: 850,
+    maxWidth: 900,
     marginBottom: '2rem',
     marginTop: '2rem',
     transition: 'all 225ms cubic-bezier(0.4, 0.0, 0.2, 1);'
@@ -58,35 +60,56 @@ class TimelineCard extends React.Component {
 
     let cardMedia = '';
     let dateString = '';
+    if(description === undefined) {
+      description = '';
+    }
     if (description.length > 170 && expanded === false) {
       description = description.substring(0, 167);
       description += "...";
     }
+    
 
     if (images !== undefined) {
-      cardMedia = (
-        <CardMedia
-          className={mediaClassToUse}
-          image={images[0]}
-          title="Contemplative Reptile"
-        />
-      );
+      if (expanded) {
+        cardMedia = (
+          <Carousel>
+            {images.map(function(img, i) {
+              return (
+                <div>
+                  <img src={img} />
+                </div>
+              );
+            })}
+          </Carousel>
+        );
+      } else {
+        cardMedia = (
+          <CardActionArea onClick={() => this.setState({expanded: !expanded})}>
+            <CardMedia
+              className={mediaClassToUse}
+              image={images[0]}
+              title="Contemplative Reptile"
+            />
+          </CardActionArea>
+        );
+      }
     }
-
-    if (date.day === undefined && date.month === undefined) {
-      dateString = `${date.year}`;
-    } else if (date.day === undefined) {
-      dateString = `${date.month}/${date.year}`;
+    if(date !== undefined) {
+      if (date.day === undefined && date.month === undefined) {
+        dateString = `${date.year}`;
+      } else if (date.day === undefined) {
+        dateString = `${date.month}/${date.year}`;
+      } else {
+        dateString = `${date.month}/${date.day}/${date.year}`;
+      }
     } else {
-      dateString = `${date.month}/${date.day}/${date.year}`;
+      dateString = '';
     }
 
 
     return (
       <Card className={cardClassToUse}>
-        <CardActionArea onClick={() => this.setState({expanded: !expanded})}>
-          {cardMedia}
-        </CardActionArea>
+        {cardMedia}
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
             {name}
@@ -108,7 +131,7 @@ class TimelineCard extends React.Component {
             && (
               <React.Fragment>
                 <Typography variant="h6" gutterBottom>
-                  Image:
+                  Images:
                 </Typography>
                 {imageDescriptions.map(function(desc, i) {
                   return (
