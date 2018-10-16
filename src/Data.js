@@ -11,10 +11,16 @@ const TimelineData = [
         Product Company. Building, equipment, and land cost $1,000,000. At the official opening on
         August 11, 1908, 10,000 people visited the hotel in three hours.`,
         source: 'http://library.rit.edu/findingaids/html/RITArc.0224.html',
-        image: '/images/1.jpg',
-        imageDescription: `View of the exterior of Nathaniel Rochester Hall.
-        The exterior of this building was largely unchanged before it's conversion to RIT housing.`,
-        imageSource: 'https://albert.rit.edu/record=b1510885~S3',
+        images: [
+            '/images/1.jpg'
+        ],
+        imageDescriptions: [
+            `View of the exterior of Nathaniel Rochester Hall.
+            The exterior of this building was largely unchanged before it's conversion to RIT housing.`
+        ],
+        imageSources: [
+            'https://albert.rit.edu/record=b1510885~S3'
+        ],
     },
     {
         date: {
@@ -27,12 +33,14 @@ const TimelineData = [
         It was known for elaborate Renaissance interior theming and contained ballroom that could
         hold 1,000 people.`,
         source: 'http://www.rochestersubway.com/topics/2012/09/today-september-14-in-rochester-history-seneca-hotel-opens/',
-        image: '/images/2.jpg',
-        imageDescription: `The Seneca Hotel, 26 S. Clinton Avenue, south of E. Main Street on the east
+        images: [
+            '/images/2.jpg'
+        ],
+        imageDescriptions: [`The Seneca Hotel, 26 S. Clinton Avenue, south of E. Main Street on the east
         side of the street. The stores in front, left to right, are Laurabelle's Greeting Cards, Ringclear
-        Hosery Co., and Rochester Cleaning & Dyeing Co.`,
-        imageSource: `Photo from: Rochester Municiple Archives, sourced from
-        http://www.rochestersubway.com/topics/2012/09/today-september-14-in-rochester-history-seneca-hotel-opens/`,
+        Hosery Co., and Rochester Cleaning & Dyeing Co.`],
+        imageSources: [`Photo from: Rochester Municiple Archives, sourced from
+        http://www.rochestersubway.com/topics/2012/09/today-september-14-in-rochester-history-seneca-hotel-opens/`],
     },
     {
         date: {
@@ -49,7 +57,9 @@ const TimelineData = [
             month: '8',
             year: '1957',
         },
-        image: '/images/3.png',
+        images: [
+            '/images/3.png'
+        ],
         name: 'Newly purchased male student housing is home to International Graphic Arts Education Association Session',
         description: `Even before it's formal conversion the newly purchased Manger was used as an
         events space for RIT related events. Bryon G. Culver, who was the head of RIT's printing department,

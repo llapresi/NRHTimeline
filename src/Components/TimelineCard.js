@@ -43,7 +43,7 @@ class TimelineCard extends React.Component {
   }
 
   render() {
-    let { name, image, description, date, classes, source, imageDescription, imageSource } = this.props;
+    let { name, images, description, date, classes, source, imageDescriptions, imageSources } = this.props;
     const { expanded } = this.state;
         
     let cardClassToUse = classes.card;
@@ -63,11 +63,11 @@ class TimelineCard extends React.Component {
       description += "...";
     }
 
-    if (image !== undefined) {
+    if (images !== undefined) {
       cardMedia = (
         <CardMedia
           className={mediaClassToUse}
-          image={image}
+          image={images[0]}
           title="Contemplative Reptile"
         />
       );
@@ -104,23 +104,25 @@ class TimelineCard extends React.Component {
               </Typography>
             )
           }
-          {imageDescription !== undefined && expanded
+          {imageDescriptions !== undefined && expanded
             && (
               <React.Fragment>
                 <Typography variant="h6" gutterBottom>
                   Image:
                 </Typography>
-                <Typography variant="body1" gutterBottom>
-                  {imageDescription}
-                </Typography>
+                {imageDescriptions.map(function(desc, i) {
+                  return (
+                    <React.Fragment>
+                      <Typography variant="body1" gutterBottom>
+                        {i+1}: {imageDescriptions[i]}
+                      </Typography>
+                      <Typography variant="caption" gutterBottom>
+                        Source: {imageSources[i]}
+                      </Typography>
+                    </React.Fragment>
+                  );
+                })}
               </React.Fragment>
-            )
-          }
-          {imageSource !== undefined && expanded
-            && (
-              <Typography variant="caption" gutterBottom>
-                Image Source: {imageSource}
-              </Typography>
             )
           }
         </CardContent>
