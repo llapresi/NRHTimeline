@@ -35,10 +35,11 @@ class App extends Component {
         <div className="App-header">
           {dated === true &&
             <React.Fragment>
-              {TimelineData.map(function(obj) {
+              {TimelineData.map(function(obj, i) {
                 return (
                   <TimelineCard
                     {...obj}
+                    key={i}
                   />
                 )
               })}
@@ -46,10 +47,11 @@ class App extends Component {
           }
           {dated === false &&
             <React.Fragment>
-              {NonDatedData.map(function(obj) {
+              {NonDatedData.map(function(obj, i) {
                 return (
                   <TimelineCard
                     {...obj}
+                    key={i}
                   />
                 )
               })}

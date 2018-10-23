@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -27,7 +26,7 @@ const styles = {
     transition: 'all 225ms cubic-bezier(0.4, 0.0, 0.2, 1);'
   },
   media: {
-    height: 140,
+    height: 200,
     transition: 'all 225ms cubic-bezier(0.4, 0.0, 0.2, 1);'
   },
   mediaExpanded: {
@@ -75,8 +74,8 @@ class TimelineCard extends React.Component {
           <Carousel>
             {images.map(function(img, i) {
               return (
-                <div>
-                  <img src={img} />
+                <div key={i}>
+                  <img src={img} alt="" />
                 </div>
               );
             })}
@@ -135,7 +134,7 @@ class TimelineCard extends React.Component {
                 </Typography>
                 {imageDescriptions.map(function(desc, i) {
                   return (
-                    <React.Fragment>
+                    <React.Fragment key={i}>
                       <Typography variant="body1" gutterBottom>
                         {i+1}: {imageDescriptions[i]}
                       </Typography>
@@ -159,10 +158,5 @@ class TimelineCard extends React.Component {
   }
   
 }
-
-TimelineCard.propTypes = {
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-};
 
 export default withStyles(styles)(TimelineCard);
